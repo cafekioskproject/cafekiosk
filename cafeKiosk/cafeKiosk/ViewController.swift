@@ -31,9 +31,10 @@ class ViewController: UIViewController {
         selectMenuTableView.delegate = self
         selectMenuTableView.dataSource = self
         
+        
     }
-
-
+    
+    
     //  카테고리 탭 기능
     @IBAction func tappedCategory(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -62,7 +63,7 @@ class ViewController: UIViewController {
     
     @IBAction func cancelButton(_ sender: Any) {
         let alert2 = UIAlertController(title: "주문 전체 삭제", message: "주문을 모두 삭제하시겠습니까?", preferredStyle: .alert)
-        let confirm2 = UIAlertAction(title: "예", style: .default, handler: { [self]_ in 
+        let confirm2 = UIAlertAction(title: "예", style: .default, handler: { [self]_ in
             self.selectCount = 0
             self.selectPrice = 0
             self.totalSelectCount.text = String(selectCount)
@@ -93,9 +94,6 @@ class ViewController: UIViewController {
         alert3.addAction(cancel3)
         present(alert3, animated: true)
     }
-    
-
-    
 }
 
 // 컬렉션뷰에 데이터 전달
@@ -153,8 +151,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = selectMenuTableView.dequeueReusableCell(withIdentifier: "SelectedCell", for: indexPath) as! SelectedCell
         cell.selectImage.image = selectedMenuList[indexPath.row].image
         cell.selectMenuName.text = selectedMenuList[indexPath.row].name
-        
-        
+        //희라 : 중복된거 수정하실때 이부분에 cell.selectMenuCount.text 카운트 더해지도록하면될거같아요
         return cell
         
     }
@@ -168,5 +165,12 @@ class SelectedCell: UITableViewCell {
     @IBOutlet weak var selectImage: UIImageView!
     @IBOutlet weak var selectMenuName: UILabel!
     
+    //희라 추가
+    //스탭퍼 min 1, max 9
+    @IBOutlet weak var selectStepper: UIStepper!
+    @IBOutlet weak var selectMenuCount: UILabel!
+    @IBAction func selectStepperAct(_ sender: UIStepper) {
+        selectMenuCount.text = Int(sender.value).description
+    }
 }
 

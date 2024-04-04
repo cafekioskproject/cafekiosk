@@ -118,18 +118,44 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEd-rC-2ys">
+                                                    <rect key="frame" x="331.33333333333331" y="30" width="11" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="9" translatesAutoresizingMaskIntoConstraints="NO" id="S84-JO-a4u">
+                                                    <rect key="frame" x="229" y="24" width="94" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="87U-8e-Z4R"/>
+                                                        <constraint firstAttribute="width" constant="94" id="H0l-6m-E7B"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="selectStepperAct:" destination="bUB-4j-XXG" eventType="valueChanged" id="rSG-9q-O6h"/>
+                                                    </connections>
+                                                </stepper>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="oEd-rC-2ys" firstAttribute="top" secondItem="ThU-fk-Y1m" secondAttribute="topMargin" constant="19" id="10B-0c-1Kb"/>
                                                 <constraint firstAttribute="bottom" secondItem="WHc-mJ-dR8" secondAttribute="bottom" id="KeF-Fl-qC0"/>
+                                                <constraint firstItem="oEd-rC-2ys" firstAttribute="leading" secondItem="ThU-fk-Y1m" secondAttribute="leadingMargin" constant="311.32999999999998" id="MQL-zP-d2a"/>
                                                 <constraint firstItem="WHc-mJ-dR8" firstAttribute="leading" secondItem="ThU-fk-Y1m" secondAttribute="leading" id="UeI-3z-i9u"/>
                                                 <constraint firstItem="fJ2-Bf-mY2" firstAttribute="centerY" secondItem="ThU-fk-Y1m" secondAttribute="centerY" id="a33-fX-y87"/>
                                                 <constraint firstItem="fJ2-Bf-mY2" firstAttribute="leading" secondItem="WHc-mJ-dR8" secondAttribute="trailing" constant="10" id="arg-Fd-VEl"/>
                                                 <constraint firstItem="WHc-mJ-dR8" firstAttribute="top" secondItem="ThU-fk-Y1m" secondAttribute="top" id="cBk-Hh-Oyq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oEd-rC-2ys" secondAttribute="trailing" constant="0.67000000000000004" id="esb-Nz-hwA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="S84-JO-a4u" secondAttribute="trailing" constant="20" id="hDZ-DZ-5cZ"/>
+                                                <constraint firstItem="S84-JO-a4u" firstAttribute="leading" secondItem="WHc-mJ-dR8" secondAttribute="trailing" constant="149" id="ip5-f3-Boc"/>
+                                                <constraint firstItem="S84-JO-a4u" firstAttribute="top" secondItem="ThU-fk-Y1m" secondAttribute="topMargin" constant="13" id="qwe-0b-eyE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oEd-rC-2ys" secondAttribute="bottom" constant="18" id="xGd-KP-R1s"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="S84-JO-a4u" secondAttribute="bottom" constant="13" id="xZT-6J-j2f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="selectImage" destination="WHc-mJ-dR8" id="oq9-CI-j7h"/>
+                                            <outlet property="selectMenuCount" destination="oEd-rC-2ys" id="ONE-8n-JDN"/>
                                             <outlet property="selectMenuName" destination="fJ2-Bf-mY2" id="2Ti-oO-GJG"/>
+                                            <outlet property="selectStepper" destination="S84-JO-a4u" id="IOS-VL-vhb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
