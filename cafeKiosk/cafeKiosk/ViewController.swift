@@ -113,28 +113,27 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedMenuList.append(menuList[indexPath.row])
-        selectCount += 1
-        selectPrice += Int(menuList[indexPath.row].price)!
+        let selectedItem = menuList[indexPath.row]
         
-        print("\(indexPath.row)선택됨")
-        print(selectedMenuList)
-        print(selectCount)
+        if let existingItemIndex = selectedMenuList.firstIndex(where: { $0.name == selectedItem.name }) {
+            selectedMenuList[existingItemIndex].count += 1
+            
+            //print(selectedMenuList[existingItemIndex].count)
+            // 태욱 : 선택된 각 항목 당 선택 수량을 파악하기 위해 MenuData 파일을 수정하여 count를 추가하였습니다.
+        } else {
+            selectedMenuList.append(selectedItem)
+        }
+        //태욱 : collectionView에서 선택된 항목은 selectedMenuList에 추가되지 않도록하여, tableView에 항목이 중복되지 않게 만들었습니다.
+        
+        
+        selectCount += 1
+        selectPrice += Int(selectedItem.price)!
+        
         totalSelectCount.text = String(selectCount)
         totalSelectPrice.text = String(selectPrice)
         
         selectMenuTableView.reloadData()
     }
-}
-
-
-
-class MenuCell: UICollectionViewCell {
-
-    @IBOutlet weak var menuName: UILabel!
-    @IBOutlet weak var menuPrice: UILabel!
-    @IBOutlet weak var menuImage: UIImageView!
-    
 }
 
 
@@ -152,13 +151,23 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectImage.image = selectedMenuList[indexPath.row].image
         cell.selectMenuName.text = selectedMenuList[indexPath.row].name
         //희라 : 중복된거 수정하실때 이부분에 cell.selectMenuCount.text 카운트 더해지도록하면될거같아요
+        
         return cell
         
     }
-    
-    
+}
+
+
+
+class MenuCell: UICollectionViewCell {
+
+    @IBOutlet weak var menuName: UILabel!
+    @IBOutlet weak var menuPrice: UILabel!
+    @IBOutlet weak var menuImage: UIImageView!
     
 }
+
+
 
 class SelectedCell: UITableViewCell {
     

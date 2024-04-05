@@ -8,15 +8,17 @@
 import Foundation
 import UIKit
 
-struct MenuData {
-    let name: String
-    let price: String
+class MenuData {
+    var name: String
+    var price: String
     var image: UIImage
+    var count: Int
     
     init(name: String, price: String, image: UIImage) {
         self.name = name
         self.price = price
         self.image = image
+        self.count = 1
     }
 }
 
